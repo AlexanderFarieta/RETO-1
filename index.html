@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Convertidor de Divisas</title>
+	<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+	<div class="card" style="width: 18rem;">
+
+		<h1 class="heading text-center display-2">
+			Convertidor de Divisas</h1>
+		<div class="card-body">
+			
+      <div class="image">
+       <img src="images/cambio-de-divisas.png" class="card-img" alt="Currencies" width="100px">
+      </div>
+
+			 <input id="cantidad-dinero" class="form-control form-control-lg" type="number" placeholder="Cantidad de Dinero" aria-label=".form-control-lg example">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text">De</span>
+						<select class="form-control from" id="moneda-origen">
+                        <option value="">Seleccione</option>
+                            <option value="USD">USD</option>
+                            <option value="MXN">MXN</option>
+                            <option value="COP">COP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                    </select>
+				 <span class="input-group-text">A</span>
+					  <select class="form-control to" id="moneda-destino">
+                      <option value="">Seleccione</option>
+                            <option value="USD">USD</option>
+                            <option value="MXN">MXN</option>
+                            <option value="COP">COP</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                    </select>
+				  </div>
+			  </div>
+
+		<div class="text-center">
+
+			<button class="btn btn-primary convert m-2"
+                    type="submit">
+                 Convertir</button>
+
+			<button class="btn btn-primary m-2"
+                    onclick="clearVal()">
+               Borrar</button>
+		</div>
+
+	</div>
+
+	<div id="finalAmount" class="text-center">
+
+		<h2>Resultado Divisa:
+			<span class="finalValue"
+                  style="color:blue;">
+       </span>
+		</h2>
+
+	</div>
+	</div>
+
+	<script src="scripts/script.js" type="module"></script>
+	<script src="data/data.js" type="module"></script>
+</body>
+
+</html>
