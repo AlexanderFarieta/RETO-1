@@ -9,14 +9,16 @@ let convertir = 0
 const fragmento = document.createDocumentFragment();
 const fragmento2 = document.createDocumentFragment();
 
-let USD = 1;
-let MXN = 0.049;
-let COP = 0.00024;
-let EUR = 1.13;
-let GBP = 1.36;
-
 var monedaOrigen = ['Seleccione', 'USD', 'MXN', 'COP', 'EUR', 'GBP']
-var monedaDestino = ['Seleccione','USD','MXN','COP','EUR','GBP']
+var monedaDestino = ['Seleccione', 'USD', 'MXN', 'COP', 'EUR', 'GBP']
+
+/* Equivalencia de Divisas a USD
+USD = 1;
+MXN = 0.00024;
+COP = 0.049;
+EUR = 1.13;
+GBP = 1.36;
+*/
 
 monedaOrigen.forEach((data, index) => {
   const item = document.createElement('option');
@@ -42,7 +44,7 @@ formulario.addEventListener("submit", (e) => {
   let cantidadDinero = parseFloat(document.getElementById("cantidad-dinero").value);
   const destinoOption = document.getElementById('moneda-destino');
   const destinoMoneda = destinoOption.options[destinoOption.selectedIndex].value;
-
+  var valorDivisa = [0, 1, 0.049, 0.00024, 1.13, 1.36].value
   const mensajeAlerta = document.createElement('div');
   mensajeAlerta.classList.add('text-center', 'alert');
 
@@ -52,15 +54,24 @@ formulario.addEventListener("submit", (e) => {
     alerta.appendChild(mensajeAlerta)
     document.getElementById("finalAmount").style.display = "none"
   }
-  else if (cantidadDinero < 0 || isNaN(formulario.cantidad.value) == true) {
+  else if (cantidadDinero < 0 || isNaN(formulario.cantidad) == true) {
     mensajeAlerta.classList.add('alert-danger');
     mensajeAlerta.appendChild(document.createTextNode('Valor(es) Inválido(s)'));
     alerta.appendChild(mensajeAlerta)
     document.getElementById("finalAmount").style.display = "none"
   }
-  
-  var convertir = (cantidadDinero * origenMoneda) / destinoMoneda
-  document.getElementById("finalValue").innerHTML = convertir.toFixed(2);
+  else if (origenMoneda.value > 0 || destinoMoneda.value > 0) {
+    value = valorDivisa[data.value].value
+  }
+
+  var valorCalculo = (cantidadDinero * origenMoneda) / destinoMoneda
+  valorCalculo = Number(valorCalculo).toFixed(2)
+  var valorCalculo = document.createTextNode(valorCalculo)
+
+  let resultadoCalculo = document.getElementById("finalValue")
+  resultadoCalculo.innerHTML = ''
+  resultadoCalculo.appendChild(valorCalculo)
+
   document.getElementById("finalAmount").style.display = "block";
 
   
